@@ -25,8 +25,8 @@ public class CamMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseInput.x = Input.GetAxis("Mouse X") * mouseSensetivity;
-        mouseInput.y = Input.GetAxis("Mouse Y") * mouseSensetivity;
+        mouseInput.x = Input.GetAxis("Mouse X") * mouseSensetivity * Time.deltaTime;
+        mouseInput.y = Input.GetAxis("Mouse Y") * mouseSensetivity * Time.deltaTime;
     }
 
     private void FixedUpdate() {
@@ -37,7 +37,7 @@ public class CamMovement : MonoBehaviour
             //transform.Rotate(transform.right, -mouseInput.x * 900 * Time.deltaTime);
             mouseInput.y = Mathf.Clamp(mouseInput.y, minYAngle, maxYAngle);
 
-            Quaternion rotation = Quaternion.Euler(mouseInput * Time.deltaTime);
+            Quaternion rotation = Quaternion.Euler(mouseInput);
 
 
         }
